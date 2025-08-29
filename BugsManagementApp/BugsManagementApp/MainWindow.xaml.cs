@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using BugsManagementApp.Repositories;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,5 +21,24 @@ namespace BugsManagementApp
         {
             InitializeComponent();
         }
+
+        private void BtnOpenBugsWindow_Click(object sender, RoutedEventArgs e)
+        {
+            BugsWindow bugsWindow = new BugsWindow();
+            bugsWindow.Show();
+        }
+
+        private void BtnOpenCategoriesWindow_Click(object sender, RoutedEventArgs e)
+        {
+            CategoriesWindow categoriesWindow = new CategoriesWindow();
+            categoriesWindow.Show();
+        }
+
+        private void BtnWriteCompositeToFile_Click(object sender, RoutedEventArgs e)
+        {
+            CategorySqlRepository categorySqlRepository = CategorySqlRepository.GetInstance();
+            categorySqlRepository.WriteCompositeTreeToFile();
+        }
     }
+
 }
